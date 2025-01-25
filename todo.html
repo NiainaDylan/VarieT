@@ -1,0 +1,697 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>VarieT to do list:</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="186fc14b-2e35-8040-9cde-caa1bb0e2b44" class="page sans"><header><h1 class="page-title">VarieT to do list:</h1><p class="page-description"></p></header><div class="page-body"><h1 id="186fc14b-2e35-80bc-b231-d0a48e03d3b6" class="">Back Office (Partie 1) </h1><h2 id="186fc14b-2e35-801b-9163-f460e3fead08" class="">Login :</h2><ul id="186fc14b-2e35-80d2-8816-fe911ed79c16" class="bulleted-list"><li style="list-style-type:disc">Affichage :<ul id="186fc14b-2e35-8025-aa4f-e22dedc6163c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Formulaire : username, passowrd</span><div class="indented"></div></li></ul></li></ul><ul id="186fc14b-2e35-8015-9a72-f3e87cd93b9c" class="bulleted-list"><li style="list-style-type:disc">Model : <ul id="186fc14b-2e35-8085-9a7a-f3b27558cfe6" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Connexion → login()</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-80be-8944-eb3414fe7a43" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">controller → doPost() → loginAdmin()</span><div class="indented"></div></li></ul></li></ul><ul id="186fc14b-2e35-8030-a274-cb969c093430" class="bulleted-list"><li style="list-style-type:disc">Base :<ul id="186fc14b-2e35-80af-a209-ca7c23889200" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">table admin</span><div class="indented"></div></li></ul></li></ul><ul id="186fc14b-2e35-8092-bec8-c7f576b91241" class="bulleted-list"><li style="list-style-type:disc">Integration :</li></ul><p id="186fc14b-2e35-80ca-ba13-eaf921cecc94" class="">
+</p><h3 id="186fc14b-2e35-808d-9401-ce4c07440d8c" class="">Gestion de the :</h3><ul id="186fc14b-2e35-8047-a533-c6818f35abb6" class="bulleted-list"><li style="list-style-type:disc">Affichage :<ul id="186fc14b-2e35-8092-a015-ced3438605cd" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">list ( id, nom, occupation, rendement , prix initaire)</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-80ca-9b04-cddc1942663e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">bouton ajouter nouvelle variete </span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-80dd-b50a-dc4194c58eaf" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">formulaire de recherche : nom, occupation, rendement, prix min, prix max </span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-804c-8679-cc5907bfa6a6" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">bouton sur chaque list : edit, details, delete</span><div class="indented"></div></li></ul></li></ul><ul id="186fc14b-2e35-8048-a3be-deede495829d" class="bulleted-list"><li style="list-style-type:disc">Model :<ul id="186fc14b-2e35-800d-9530-fc5a4ffb0fe5" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Variete → getAll_variete()</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-8073-bbcb-c30595ea87ff" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">controller → doGet() → listerVariete()</span><div class="indented"></div></li></ul></li></ul><ul id="186fc14b-2e35-8050-9b3f-f5e2c87e65e0" class="bulleted-list"><li style="list-style-type:disc">Base :<ul id="186fc14b-2e35-80fc-871c-e27d176c0d86" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">table : variete_the</span><div class="indented"></div></li></ul></li></ul><ul id="186fc14b-2e35-800b-a61c-d28ac1ef9498" class="bulleted-list"><li style="list-style-type:disc">Integration :</li></ul><h3 id="186fc14b-2e35-804f-a5d7-cec4d22eda6a" class="">CRUD variete :</h3><ul id="186fc14b-2e35-806a-92c8-d824176f84c6" class="bulleted-list"><li style="list-style-type:disc">Afiichage : <ul id="186fc14b-2e35-8008-9b5d-e1ba5bb8e2cf" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Formulaire : </span><div class="indented"><ul id="186fc14b-2e35-80d9-88ea-d548d64bcc63" class="toggle"><li><details open=""><summary>Input :</summary><ul id="186fc14b-2e35-8059-a865-fb821b0067fc" class="bulleted-list"><li style="list-style-type:disc">nom variete </li></ul><ul id="186fc14b-2e35-8031-9454-e8af1c55c22b" class="bulleted-list"><li style="list-style-type:disc">occupation par surface </li></ul><ul id="186fc14b-2e35-80a6-81ca-dd11f22f7823" class="bulleted-list"><li style="list-style-type:disc">rendement </li></ul><ul id="186fc14b-2e35-80c8-93b3-d5bb6f1d645a" class="bulleted-list"><li style="list-style-type:disc">prix </li></ul></details></li></ul><ul id="186fc14b-2e35-8055-8078-ef37a378702a" class="toggle"><li><details open=""><summary>Bouton submit </summary></details></li></ul></div></li></ul></li></ul><ul id="186fc14b-2e35-80e4-ae90-e20a400cbd5a" class="bulleted-list"><li style="list-style-type:disc">Model :<ul id="186fc14b-2e35-8072-b8ca-ce8557609918" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">$action =”edit” ⇒ Variete → getVariete_byId()</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-8051-805f-dc0447988fc7" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">controller → doGet() ⇒ if $action equals “new” → afficherFormulerAjout() </span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-8024-b9f3-f12d38a45451" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">controller →doPost() → AjouterVariete → InsertVariete ()</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-8031-bd9d-efaaf424e0b2" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">controller → if $action equals “edit” → afficherFormulerModification() &gt; Variete → UpdateVariete ()</span><div class="indented"></div></li></ul></li></ul><ul id="186fc14b-2e35-80a1-bacf-e03ff69cf395" class="bulleted-list"><li style="list-style-type:disc">Base : <ul id="186fc14b-2e35-8013-8231-d3572531773f" class="toggle"><li><details open=""><summary>table</summary><ul id="186fc14b-2e35-8025-86f5-ce5a73491ced" class="bulleted-list"><li style="list-style-type:disc">variete_the</li></ul></details></li></ul></li></ul><p id="186fc14b-2e35-8026-97dc-d8a097cb7fa5" class="">
+</p><p id="186fc14b-2e35-805b-a171-cabf7a31c46c" class="">
+</p><h3 id="186fc14b-2e35-80f4-9e20-d5cdefe0b751" class="">Gestion de parcelle :</h3><ul id="186fc14b-2e35-8098-8a32-c93b26f4ef33" class="bulleted-list"><li style="list-style-type:disc">Affichage :<ul id="186fc14b-2e35-8054-b749-c7f106416d5d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">list ( id, surface, variete)</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-80be-ab2d-fcfaba7c9a2a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">bouton ajouter nouvelle parcelle</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-8007-81e5-e1fc4d212046" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">formulaire de recherche : surface min, surface max, variete</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-8017-8183-ee39903c87db" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">bouton sur chaque list : edit, details, delete</span><div class="indented"></div></li></ul></li></ul><ul id="186fc14b-2e35-8054-acd9-ed093eca4eee" class="bulleted-list"><li style="list-style-type:disc">Model :<ul id="186fc14b-2e35-8072-8cce-ec03d0b0d288" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Parcelle → getAll_parcelle();</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-8099-910e-ee69babaa78d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">controller → doGet() → listerParcelle()</span><div class="indented"></div></li></ul></li></ul><ul id="186fc14b-2e35-8092-85a7-e5efccdd27ed" class="bulleted-list"><li style="list-style-type:disc">Base :<ul id="186fc14b-2e35-80c4-ac6c-f6da711c153e" class="toggle"><li><details open=""><summary>table : </summary><ul id="186fc14b-2e35-801e-a079-f68da04c3884" class="bulleted-list"><li style="list-style-type:disc">parcelle</li></ul><ul id="186fc14b-2e35-801e-8bfc-e4d2f15d1d82" class="bulleted-list"><li style="list-style-type:disc">variete</li></ul></details></li></ul></li></ul><ul id="186fc14b-2e35-8004-85dd-d09077984194" class="bulleted-list"><li style="list-style-type:disc">Integration :</li></ul><p id="186fc14b-2e35-8063-9faf-ec4f515e08a9" class="">
+</p><h3 id="186fc14b-2e35-8049-b476-d355c238a921" class="">CRUD parcelle :</h3><ul id="186fc14b-2e35-80be-851d-ee076d3d2002" class="bulleted-list"><li style="list-style-type:disc">Afiichage : <ul id="186fc14b-2e35-8047-9c90-da54e3cb48f7" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Formulaire : </span><div class="indented"><ul id="186fc14b-2e35-804f-a5f3-ccdafa4c30e4" class="toggle"><li><details open=""><summary>Input :</summary><ul id="186fc14b-2e35-80ea-a64a-e5b106fd8a4b" class="bulleted-list"><li style="list-style-type:disc">surface</li></ul><ul id="186fc14b-2e35-80e5-969b-d17e7e439c2f" class="bulleted-list"><li style="list-style-type:disc">variete</li></ul></details></li></ul><ul id="186fc14b-2e35-8064-9b88-e46a0add0465" class="toggle"><li><details open=""><summary>Bouton submit</summary></details></li></ul></div></li></ul></li></ul><ul id="186fc14b-2e35-80dc-9f4c-ed9d29115856" class="bulleted-list"><li style="list-style-type:disc">Model :<ul id="186fc14b-2e35-80bb-9e4f-d1844cc3aade" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">$action =&quot;edit&quot; ⇒ Parcelle → getParcelle_byId()</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-8081-af03-c072cef30e74" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">controller → doGet() ⇒ if $action equals &quot;new&quot; → afficherFormulerAjout()<br/>controller →doPost() → AjouterParcelle → InsertParcelle()<br/></span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-8041-bdde-c41593ccbe30" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">controller → if $action equals &quot;edit&quot; → afficherFormulerModification() → Parcelle → UpdateParcelle()</span><div class="indented"></div></li></ul></li></ul><ul id="186fc14b-2e35-80c0-b6d9-e3bff3345feb" class="bulleted-list"><li style="list-style-type:disc">Base : <ul id="186fc14b-2e35-8079-80c4-e1743f6b7bed" class="toggle"><li><details open=""><summary>table</summary><ul id="186fc14b-2e35-8073-8680-c55e43fc9fad" class="bulleted-list"><li style="list-style-type:disc">parcelle</li></ul><ul id="186fc14b-2e35-80bb-a5f8-cc9ea35a648d" class="bulleted-list"><li style="list-style-type:disc">variete</li></ul></details></li></ul></li></ul><p id="186fc14b-2e35-800e-8757-fbd5c915b2e7" class="">
+</p><h3 id="186fc14b-2e35-80fe-a222-dbf650156c87" class="">Gestion de cueilleur :</h3><ul id="186fc14b-2e35-809b-aee9-f34dc002fd45" class="bulleted-list"><li style="list-style-type:disc">Affichage :<ul id="186fc14b-2e35-8084-af0b-e0de6f5462be" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">list ( id, nom, genre, date naissance)</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-8057-bd0f-d62b21447f05" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">bouton ajouter nouveau cueilleur</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-8029-955d-e79fca796ef2" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">formulaire de recherche : nom, genre</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-8051-b520-eea7d1678825" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">bouton sur chaque list : edit, details, delete</span><div class="indented"></div></li></ul></li></ul><ul id="186fc14b-2e35-805b-aabb-e1652249295b" class="bulleted-list"><li style="list-style-type:disc">Model :<ul id="186fc14b-2e35-8043-8517-dd315be954f5" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Cueilleur → getAll_cueilleur()</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-80a0-b468-f6e46443a8c2" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">controller → doGet() → listerCueilleur()</span><div class="indented"></div></li></ul></li></ul><ul id="186fc14b-2e35-808f-8480-fb981f3bd2d0" class="bulleted-list"><li style="list-style-type:disc">Base :<ul id="186fc14b-2e35-8081-a259-dd648af1b91d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">table : cueilleur</span><div class="indented"></div></li></ul></li></ul><ul id="186fc14b-2e35-80de-ad5c-ecb0d39d1f09" class="bulleted-list"><li style="list-style-type:disc">Integration :</li></ul><h3 id="186fc14b-2e35-80eb-ba82-ca1f2bd168cf" class="">CRUD cueilleur :</h3><ul id="186fc14b-2e35-8034-b76e-d72da615a6ec" class="bulleted-list"><li style="list-style-type:disc">Afiichage :<ul id="186fc14b-2e35-8068-8eae-c19b9d765caf" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Formulaire :</span><div class="indented"><ul id="186fc14b-2e35-8095-9850-dc8629457d0f" class="toggle"><li><details open=""><summary>Input :</summary><ul id="186fc14b-2e35-80c2-ac93-c1d48c7ed757" class="bulleted-list"><li style="list-style-type:disc">nom</li></ul><ul id="186fc14b-2e35-80b6-9d3b-dab8005348cf" class="bulleted-list"><li style="list-style-type:disc">genre</li></ul><ul id="186fc14b-2e35-80b7-80a1-de63b3a8a4d9" class="bulleted-list"><li style="list-style-type:disc">date naissance</li></ul></details></li></ul><ul id="186fc14b-2e35-80b3-8d06-c0f847e72003" class="toggle"><li><details open=""><summary>Bouton submit</summary></details></li></ul></div></li></ul></li></ul><ul id="186fc14b-2e35-809e-aaeb-c7e0b1cde079" class="bulleted-list"><li style="list-style-type:disc">Model :<ul id="186fc14b-2e35-804a-b2fc-df0ab80ba9a0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">$action =&quot;edit&quot; ⇒ Cueilleur → getCueilleur_byId()</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-8033-a0f5-e914a88d44a9" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">controller → doGet() ⇒ if $action equals &quot;new&quot; → afficherFormulerAjout()<br/>controller →doPost() → AjouterCueilleur → InsertCueilleur()<br/></span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-807a-a3ba-e1397736c7d0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">controller → if $action equals &quot;edit&quot; → afficherFormulerModification() → Cueilleur → UpdateCueiller()</span><div class="indented"></div></li></ul></li></ul><ul id="186fc14b-2e35-804c-8979-cbb1a73281ce" class="bulleted-list"><li style="list-style-type:disc">Base :<ul id="186fc14b-2e35-8061-9c05-edbb022ed40c" class="toggle"><li><details open=""><summary>table</summary><ul id="186fc14b-2e35-80ad-83c7-ecf6ff058ffc" class="bulleted-list"><li style="list-style-type:disc">cueilleur</li></ul></details></li></ul></li></ul><p id="186fc14b-2e35-80d2-bcdd-ceb3ac868b42" class="">
+</p><p id="186fc14b-2e35-805f-bdd7-d5c5a868f1bb" class="">
+</p><h3 id="186fc14b-2e35-80ed-a358-cfb331da2e84" class="">Gestion de categorie depense :</h3><ul id="186fc14b-2e35-807d-a232-d793b6576666" class="bulleted-list"><li style="list-style-type:disc">Affichage :<ul id="186fc14b-2e35-80dc-b23a-ec9167aeb66f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">list ( id, nom categorie)</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-80eb-8114-c6011a30d765" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">bouton ajouter nouvelle categorie</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-802d-8081-f3e4f638830c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">formulaire de recherche : nom categorie</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-8070-baa7-fce908d15da0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">bouton sur chaque list : edit, details, delete</span><div class="indented"></div></li></ul></li></ul><ul id="186fc14b-2e35-802c-8bb2-f1e35ca4547a" class="bulleted-list"><li style="list-style-type:disc">Model :<ul id="186fc14b-2e35-8079-90ac-ef0895ffbdad" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Categorie → getAll_categorie()</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-80c0-94ba-cf5ca32c835c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">controller → doGet() → listerCategorie()</span><div class="indented"></div></li></ul></li></ul><ul id="186fc14b-2e35-8080-9bdf-e3b2f42c6cd0" class="bulleted-list"><li style="list-style-type:disc">Base :<ul id="186fc14b-2e35-8035-a772-c507ad8fe71f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">table : categorie_depense</span><div class="indented"></div></li></ul></li></ul><ul id="186fc14b-2e35-8098-9324-e9d2d87b7ab2" class="bulleted-list"><li style="list-style-type:disc">Integration :</li></ul><h3 id="186fc14b-2e35-8080-9343-f008f117890d" class="">CRUD categorie :</h3><ul id="186fc14b-2e35-80b7-b260-d8bf2d851764" class="bulleted-list"><li style="list-style-type:disc">Affichage :<ul id="186fc14b-2e35-80ab-9d59-d5f7a3d402f1" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Formulaire :</span><div class="indented"><ul id="186fc14b-2e35-800e-9e62-dd083104533d" class="toggle"><li><details open=""><summary>Input :</summary><ul id="186fc14b-2e35-80ad-908f-e483f23fd12b" class="bulleted-list"><li style="list-style-type:disc">nom categorie</li></ul></details></li></ul><ul id="186fc14b-2e35-8008-ab94-f8a66c235a05" class="toggle"><li><details open=""><summary>Bouton submit</summary></details></li></ul></div></li></ul></li></ul><ul id="186fc14b-2e35-8024-83d1-c4eebf3b74a4" class="bulleted-list"><li style="list-style-type:disc">Model :<ul id="186fc14b-2e35-80c5-8579-d8197d3e807e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">$action =&quot;edit&quot; ⇒ Categorie → getCategorie_byId()</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-80ed-844d-ee01b9e87493" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">controller → doGet() ⇒ if $action equals &quot;new&quot; → afficherFormulerAjout()<br/>controller →doPost() → AjouterCategorie → InsertCategorie()<br/></span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-80a5-a690-cc1e73dcf9f2" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">controller → if $action equals &quot;edit&quot; → afficherFormulerModification() → Categorie → VarieteCategorie()</span><div class="indented"></div></li></ul></li></ul><ul id="186fc14b-2e35-80b5-a475-cd564ee918d2" class="bulleted-list"><li style="list-style-type:disc">Base :<ul id="186fc14b-2e35-80bf-8551-c4e193314a66" class="toggle"><li><details open=""><summary>table</summary><ul id="186fc14b-2e35-8000-a485-de98d90d4289" class="bulleted-list"><li style="list-style-type:disc">categorie_depense</li></ul></details></li></ul></li></ul><p id="186fc14b-2e35-802d-ab58-c4a34ba8e0d2" class="">
+</p><p id="186fc14b-2e35-800b-81ec-d607066f0b33" class="">
+</p><h1 id="186fc14b-2e35-80ca-bd71-e6b9dbf6da66" class="">Back Office (Partie 2)</h1><p id="186fc14b-2e35-8015-9b53-f3698902a028" class="">
+</p><h3 id="186fc14b-2e35-80bb-b5b8-dd3ce0ec1b6e" class=""> Gestion de the :</h3><ul id="186fc14b-2e35-80b8-bd5a-f442cb658194" class="bulleted-list"><li style="list-style-type:disc">Affichage :<ul id="186fc14b-2e35-80fe-bf1e-e4911734a9ff" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">bouton configurer regeneration</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-80d0-8e6e-de9f84a86b54" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">colonne periode de regeneration </span><div class="indented"></div></li></ul></li></ul><ul id="186fc14b-2e35-80da-8eb5-ee3044840bbf" class="bulleted-list"><li style="list-style-type:disc">Model :<ul id="186fc14b-2e35-808b-84c5-e3a76b02e207" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Variete → getAll_variete()</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-8048-b595-d9167ad9fd9d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">controller → doGet() → listerVariete()</span><div class="indented"></div></li></ul></li></ul><ul id="186fc14b-2e35-80d9-8ecf-fbc4b44c0352" class="bulleted-list"><li style="list-style-type:disc">Base :<ul id="186fc14b-2e35-80ef-a5b3-ec1046c374a9" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">table : variete_the</span><div class="indented"></div></li></ul></li></ul><ul id="186fc14b-2e35-8028-861a-e6fa637292d1" class="bulleted-list"><li style="list-style-type:disc">Integration :</li></ul><p id="186fc14b-2e35-8001-a3a7-e30948a6a126" class="">
+</p><h3 id="186fc14b-2e35-804d-84ca-ccc20bc73393" class="">Configuration Variete :</h3><ul id="186fc14b-2e35-8013-8ebf-d8b45862bf78" class="bulleted-list"><li style="list-style-type:disc">affichage : <ul id="186fc14b-2e35-809a-b1fd-edc21baa1564" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Formulaire select les 12 mois de l’annee</span><div class="indented"></div></li></ul></li></ul><ul id="186fc14b-2e35-8020-b093-da203897baf4" class="bulleted-list"><li style="list-style-type:disc">Model :<ul id="186fc14b-2e35-8009-bec8-d45dcee92f17" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Variete : getVariete()</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-8017-9d0d-ce88c432ace7" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Controller → doGet() → AfficherFormulaireConfiguration() → getVariete_byId()</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-8046-927b-d9e329c94b70" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Controller → doPost() → configurer() → Variete → Configurer_Regeneration()</span><div class="indented"></div></li></ul></li></ul><ul id="186fc14b-2e35-80f8-876d-fb20ba996520" class="bulleted-list"><li style="list-style-type:disc">Base :<ul id="186fc14b-2e35-8042-b00f-c5826d1098ae" class="toggle"><li><details open=""><summary>table </summary><ul id="186fc14b-2e35-809b-bf31-df7c20c7849d" class="bulleted-list"><li style="list-style-type:disc">variete </li></ul><ul id="186fc14b-2e35-80bb-8674-d03a6215043a" class="bulleted-list"><li style="list-style-type:disc">periode_regeneration</li></ul></details></li></ul></li></ul><p id="186fc14b-2e35-80da-8b41-fdb83a19a16a" class="">
+</p><h3 id="186fc14b-2e35-80d1-be58-ce220976fc0f" class="">Gestion de cueilleur :</h3><ul id="186fc14b-2e35-800c-afbd-c8efb2d573fd" class="bulleted-list"><li style="list-style-type:disc">Affichage :<ul id="186fc14b-2e35-8043-a2fa-cfeb83905e5a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">colonne poids minimal </span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-80e6-87e7-c31ec6e341d0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">bonus</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-80ba-851f-e7845abf1302" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">mallus</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-8071-ba87-ce3980a03fb4" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">bouton gerer renumeration</span><div class="indented"></div></li></ul></li></ul><ul id="186fc14b-2e35-80a7-82a3-e3d89462cd38" class="bulleted-list"><li style="list-style-type:disc">Model :<ul id="186fc14b-2e35-80fc-a4b8-e58f7a594bda" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Cueilleur → UpdateRenumeration(), getCueilleur_byId()</span><div class="indented"></div></li></ul><ul id="186fc14b-2e35-8069-9320-f0ae3e64d55b" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Controller → doPost() → modifierRenumeration() : poids min, bonus, mallus</span><div class="indented"></div></li></ul></li></ul><ul id="186fc14b-2e35-80ad-a942-f8e4c7dfd69c" class="bulleted-list"><li style="list-style-type:disc">Base :<ul id="186fc14b-2e35-805a-9904-fa9cb94a4dfc" class="toggle"><li><details open=""><summary>table :</summary><ul id="186fc14b-2e35-800a-b494-d536f16d61d9" class="bulleted-list"><li style="list-style-type:disc">cueilleur</li></ul><ul id="186fc14b-2e35-80fb-be5d-e7f5dd5cbe90" class="bulleted-list"><li style="list-style-type:disc">renumeration</li></ul></details></li></ul></li></ul><p id="186fc14b-2e35-80e4-af19-fa5d448e43c8" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
